@@ -61,7 +61,7 @@ function activate(context) {
 		const selection = textEditor.selection;
 		let full_doc = document.getText();
 		let word = document.getText(selection);
-		let word_regex = new RegExp(word, "g");
+		let word_regex = new RegExp('\\b' + word + '\\b', "g");
 		const fullRange = new vscode.Range(
 			document.positionAt(0),
 			document.positionAt(full_doc.length)
@@ -95,7 +95,7 @@ function activate(context) {
 		const selection = textEditor.selection;
 		let full_doc = document.getText();
 		let word = document.getText(selection);
-		let word_regex = new RegExp(word, "g");
+		let word_regex = new RegExp('\\b' + word + '\\b', "g");
 		const fullRange = new vscode.Range(
 			document.positionAt(0),
 			document.positionAt(full_doc.length)
@@ -153,7 +153,7 @@ function activate(context) {
 		}));
 
 		let new_doc = full_doc;
-		Object.entries(re_dict).forEach(x => new_doc = new_doc.replace(RegExp(x[0], 'g'), x[1]));
+		Object.entries(re_dict).forEach(x => new_doc = new_doc.replace(RegExp('\\b' + x[0] + '\\b', 'g'), x[1]));
 
 		// if (word.trim().length == 0) {
 		// 	vscode.window.showErrorMessage("Please select some text and re-run the command.");
@@ -205,7 +205,7 @@ function activate(context) {
 		inputs.forEach(input => re_dict[input] = input.replace(/_/g, '.'));
 
 		let new_doc = full_doc;
-		Object.entries(re_dict).forEach(x => new_doc = new_doc.replace(RegExp(x[0], 'g'), x[1]));
+		Object.entries(re_dict).forEach(x => new_doc = new_doc.replace(RegExp('\\b' + x[0] + '\\b', 'g'), x[1]));
 
 		// if (word.trim().length == 0) {
 		// 	vscode.window.showErrorMessage("Please select some text and re-run the command.");
